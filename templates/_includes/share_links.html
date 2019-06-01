@@ -2,10 +2,17 @@
     {% if article.share_post and article.status != 'draft' %}
 <section>
     <p id="post-share-links">
-    <a href="mailto:matthew.brett+blog@gmail.com?subject=Comment%20on%20%22{{ article.title }}%22" target="_blank" title="Comment by email">Comment by email</a>;
-    <a href="{{article.share_post['email']}}" target="_blank" title="Share by Email">Share with email</a>
+    Email:
+    <a href="mailto:?to={{ MY_EMAIL|urlencode }}&subject=Comment%20on%20%22{{ article.title|urlencode }}%22&body={{ COMMENT_BODY|urlencode }}"
+       target="_blank"
+       title="Comment by email">
+        Add comment</a>
+    ❄
+    <a href="{{ article.share_post['email'] }}"
+       target="_blank"
+       title="Share by Email">
+        Share post</a>
     </p>
 </section>
     {% endif %}
 {% endmacro %}
-
